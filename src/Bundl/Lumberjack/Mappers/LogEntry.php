@@ -13,5 +13,4 @@ class LogEntry extends LumberjackCassandra
   public $context;
   public $file;
   public $line;
-  public $transactionId;
 }

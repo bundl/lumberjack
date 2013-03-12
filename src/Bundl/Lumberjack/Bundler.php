@@ -37,7 +37,7 @@ class Bundler extends Bundle
 
     $transLog = new TransactionLog();
     $transLog->setId($transactionId);
-    $transLog->setData($logTime, $level);
+    $transLog->setData("$logTime", $level);
     $transLog->saveChanges();
 
     $logEntry = new LogEntry();
@@ -47,7 +47,6 @@ class Bundler extends Bundle
     $logEntry->context       = $context;
     $logEntry->file          = $file;
     $logEntry->line          = $line;
-    $logEntry->transactionId = $transactionId;
     $logEntry->saveChanges();
   }
 }
