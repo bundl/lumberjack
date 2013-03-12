@@ -1,4 +1,4 @@
-lumberjack
-==========
+Lumberjack
+=========
 
 Cubex Cassandra Logger

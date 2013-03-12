@@ -1,0 +1,25 @@
+{
+  "name":              "bundl/lumberjack",
+  "description":       "Cubex Bundle : lumberjack",
+  "version":           "1.0.0",
+  "keywords":          ["lumberjack", "cubex", "cassandra", "logging", "logger", "log"],
+  "homepage":          "http://cubex.io/bundl/lumberjack",
+  "minimum-stability": "dev",
+  "license":           "BSD-3-Clause",
+  "authors":           [
+    {
+      "name":     "Brooke Bryan",
+      "email":    "brooke@bajb.net",
+      "homepage": "http://www.bajb.net",
+      "role":     "Developer"
+    }
+  ],
+  "require":           {
+    "php": ">=5.4.0"
+  },
+  "autoload":          {
+    "psr-0": {
+      "Bundl\\Lumberjack\\": "src/"
+    }
+  }
+}
