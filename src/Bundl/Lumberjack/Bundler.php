@@ -33,7 +33,7 @@ class Bundler extends Bundle
       return null;
     }
 
-    $logTime = microtime();
+    $logTime = microtime(true);
 
     $transLog = new TransactionLog();
     $transLog->setId($transactionId);
