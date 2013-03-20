@@ -41,12 +41,12 @@ class Bundler extends Bundle
     $transLog->saveChanges();
 
     $logEntry = new LogEntry();
-    $logEntry->setId($transactionId . '-' . $logTime);
-    $logEntry->level         = $level;
-    $logEntry->message       = $message;
-    $logEntry->context       = $context;
-    $logEntry->file          = $file;
-    $logEntry->line          = $line;
+    $logEntry->setId(LogEntry::makeId($transactionId, $logTime));
+    $logEntry->level   = $level;
+    $logEntry->message = $message;
+    $logEntry->context = $context;
+    $logEntry->file    = $file;
+    $logEntry->line    = $line;
     $logEntry->saveChanges();
   }
 }

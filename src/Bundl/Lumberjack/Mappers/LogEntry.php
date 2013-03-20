@@ -13,4 +13,9 @@ class LogEntry extends LumberjackCassandra
   public $context;
   public $file;
   public $line;
+
+  public static function makeId($transactionId, $logTime)
+  {
+    return $transactionId . '-' . $logTime;
+  }
 }
