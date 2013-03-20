@@ -9,10 +9,9 @@ class Cat extends CliBase
 {
   protected $_log;
 
-  public function __construct($loader, $args)
+  public function init()
   {
-    parent::__construct($loader, $args);
-    $this->_log = key($args);
+    $this->_log = $this->positionalArgValue(0);
   }
 
   public function execute()
