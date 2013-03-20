@@ -27,6 +27,7 @@ class Bundler extends Bundle
     $file          = $event->getStr('file', 'unknown');
     $line          = $event->getInt('line', 0);
     $transactionId = $event->getStr('transaction_id', null);
+    $logName       = $event->getStr('log_name', $transactionId);
 
     if($transactionId === null)
     {
@@ -36,12 +37,12 @@ class Bundler extends Bundle
     $logTime = microtime(true);
 
     $transLog = new TransactionLog();
-    $transLog->setId($transactionId);
+    $transLog->setId($logName);
     $transLog->setData("$logTime", $level);
     $transLog->saveChanges();
 
     $logEntry = new LogEntry();
-    $logEntry->setId(LogEntry::makeId($transactionId, $logTime));
+    $logEntry->setId(LogEntry::makeId($logName, $logTime));
     $logEntry->level   = $level;
     $logEntry->message = $message;
     $logEntry->context = $context;
