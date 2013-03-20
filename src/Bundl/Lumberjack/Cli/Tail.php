@@ -18,8 +18,8 @@ class Tail extends CliBase
     return [
       new CliArgument(
         "lines",
-        "output the last K lines, instead of the last 10",
-        CliArgument::VALUE_OPTIONAL, 'n'
+        "output the last K lines, instead of the last 10", 'n',
+        CliArgument::VALUE_REQUIRED, 'K'
       )
     ];
   }
@@ -28,21 +28,36 @@ class Tail extends CliBase
   {
     $this->_lines = $this->argumentValue("lines", 10);
     $this->_log   = $this->positionalArgValue(0);
+    if(empty($this->_log))
+    {
+      throw new \Exception("No log name provided");
+    }
   }
 
   public function execute()
   {
-    $cf      = TransactionLog::cf();
-    $entries = $cf->getSlice($this->_log, '', '', true, $this->_lines);
+    try
+    {
+      $cf      = TransactionLog::cf();
+      $entries = $cf->getSlice($this->_log, '', '', true, $this->_lines);
 
-    if($entries)
-    {
-      $since = last_key($entries);
-      $this->outputEntriesSince($this->_log, $since);
+      if($entries)
+      {
+        $since = last_key($entries);
+        $this->outputEntriesSince($this->_log, $since);
+      }
+      else
+      {
+        echo "No data found\n";
+      }
     }
-    else
+    catch(\Exception $e)
     {
-      echo "No data found\n";
+      if($e->getCode() == 404)
+      {
+        echo "No log exists";
+      }
+      throw $e;
     }
   }
 }
