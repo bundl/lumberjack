@@ -8,11 +8,15 @@ namespace Bundl\Lumberjack\Cli;
 use Bundl\Lumberjack\Mappers\LogEntry;
 use Bundl\Lumberjack\Mappers\TransactionLog;
 use Cubex\Cli\CliCommand;
+use Cubex\Cli\UserPrompt;
+use Cubex\Data\Validator\Validator;
 use Cubex\Foundation\Config\ConfigTrait;
 
 abstract class CliBase extends CliCommand
 {
   use ConfigTrait;
+
+  protected $_log;
 
   public function outputLine($time, $line)
   {
@@ -29,6 +33,17 @@ abstract class CliBase extends CliCommand
   {
     $parts = explode('\\', $filename);
     return implode('\\', array_slice($parts, -4));
+  }
+
+  public function requireLog()
+  {
+    $this->_log = $this->positionalArgValue(0);
+    if($this->_log === null)
+    {
+      $log = new UserPrompt("Which log do you wish to access?");
+      $log->addValidator(Validator::VALIDATE_LENGTH, [1, 100]);
+      $this->_log = $log->show();
+    }
   }
 
   public function outputEntriesSince($log, $start)

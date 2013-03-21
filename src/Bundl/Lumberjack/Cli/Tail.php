@@ -27,7 +27,7 @@ class Tail extends CliBase
   public function init()
   {
     $this->_lines = $this->argumentValue("lines", 10);
-    $this->_log   = $this->positionalArgValue(0);
+    $this->requireLog();
     if(empty($this->_log))
     {
       throw new \Exception("No log name provided");

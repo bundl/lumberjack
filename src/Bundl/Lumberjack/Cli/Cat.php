@@ -7,11 +7,9 @@ namespace Bundl\Lumberjack\Cli;
 
 class Cat extends CliBase
 {
-  protected $_log;
-
   public function init()
   {
-    $this->_log = $this->positionalArgValue(0);
+    $this->requireLog();
   }
 
   public function execute()
