@@ -5,7 +5,7 @@
 
 namespace Bundl\Lumberjack\Mappers;
 
-use Cubex\Mapper\Cassandra\CassandraMapper;
+use Cubex\Cassandra\CassandraMapper;
 
 class LumberjackCassandra extends CassandraMapper
 {
