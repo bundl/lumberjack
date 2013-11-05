@@ -8,8 +8,8 @@ namespace Bundl\Lumberjack;
 use Bundl\Lumberjack\Mappers\LogEntry;
 use Bundl\Lumberjack\Mappers\TransactionLog;
 use Cubex\Bundle\Bundle;
-use Cubex\Events\Event;
 use Cubex\Events\EventManager;
+use Cubex\Events\StdEvent;
 use Psr\Log\LogLevel;
 
 class Bundler extends Bundle
@@ -19,7 +19,7 @@ class Bundler extends Bundle
     EventManager::listen(EventManager::CUBEX_LOG, [$this, 'log']);
   }
 
-  public function log(Event $event)
+  public function log(StdEvent $event)
   {
     $level         = $event->getStr('level', LogLevel::INFO);
     $message       = $event->getStr('message', '');
