@@ -43,11 +43,14 @@ class Bundler extends Bundle
 
     $logEntry = new LogEntry();
     $logEntry->setId(LogEntry::makeId($logName, $logTime));
-    $logEntry->level   = $level;
-    $logEntry->message = $message;
-    $logEntry->context = $context;
-    $logEntry->file    = $file;
-    $logEntry->line    = $line;
+    $logEntry->level            = $level;
+    $logEntry->message          = $message;
+    $logEntry->context          = $context;
+    $logEntry->file             = $file;
+    $logEntry->line             = $line;
+    $logEntry->cubexEnvironment = defined("CUBEX_ENV") ? CUBEX_ENV : 'not set';
+    $logEntry->serverIp         = $_SERVER['SERVER_ADDR'];
+    $logEntry->serverName       = $_SERVER['SERVER_NAME'];
     $logEntry->saveChanges();
   }
 }
