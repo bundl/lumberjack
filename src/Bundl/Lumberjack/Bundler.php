@@ -49,8 +49,8 @@ class Bundler extends Bundle
     $logEntry->file             = $file;
     $logEntry->line             = $line;
     $logEntry->cubexEnvironment = defined("CUBEX_ENV") ? CUBEX_ENV : 'not set';
-    $logEntry->serverIp         = $_SERVER['SERVER_ADDR'];
-    $logEntry->serverName       = $_SERVER['SERVER_NAME'];
+    $logEntry->serverIp         = idx($_SERVER, 'SERVER_ADDR', '127.0.0.1');
+    $logEntry->serverName       = idx($_SERVER, 'SERVER_NAME', 'localhost');
     $logEntry->saveChanges();
   }
 }
