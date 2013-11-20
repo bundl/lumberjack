@@ -17,6 +17,11 @@ class LogEntry extends LumberjackCassandra
   public $serverIp;
   public $serverName;
 
+  protected function _configure()
+  {
+    $this->_setSerializer('context');
+  }
+
   public static function makeId($transactionId, $logTime)
   {
     return $transactionId . '-' . $logTime;
