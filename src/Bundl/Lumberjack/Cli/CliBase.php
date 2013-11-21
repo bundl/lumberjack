@@ -14,8 +14,6 @@ use Cubex\Foundation\Config\ConfigTrait;
 
 abstract class CliBase extends CliCommand
 {
-  use ConfigTrait;
-
   protected $_log;
 
   public function outputLine($time, $line)
