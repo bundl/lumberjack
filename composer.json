@@ -15,9 +15,10 @@
     }
   ],
   "require":           {
-    "php": ">=5.4.0",
-    "psr/log": "1.0.0",
-    "cubex/cubex": "*"
+    "php":             ">=5.4.0",
+    "psr/log":         "1.0.0",
+    "cubex/cubex":     "*",
+    "cubex/cassandra": "*"
   },
   "autoload":          {
     "psr-0": {
