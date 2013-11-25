@@ -72,6 +72,10 @@ abstract class CliBase extends CliCommand
           break;
         }
       }
+      else
+      {
+        break;
+      }
     }
   }
 }
