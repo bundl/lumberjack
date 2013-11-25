@@ -47,7 +47,7 @@ abstract class CliBase extends CliCommand
   public function outputEntriesSince($log, $start)
   {
     $cf = TransactionLog::cf();
-    do
+    while(true)
     {
       $keys  = [];
       $lines = $cf->getSlice($log, $start);
@@ -67,8 +67,11 @@ abstract class CliBase extends CliCommand
             $this->outputLine($time, $entry);
           }
         }
+        if(count($lines) < 100)
+        {
+          break;
+        }
       }
     }
-    while(count($lines) == 100);
   }
 }
