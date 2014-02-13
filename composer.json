@@ -2,7 +2,9 @@
   "name":              "bundl/lumberjack",
   "description":       "Cubex Bundle : lumberjack",
   "version":           "1.0.0",
-  "keywords":          ["lumberjack", "cubex", "cassandra", "logging", "logger", "log"],
+  "keywords":          [
+    "lumberjack", "cubex", "cassandra", "logging", "logger", "log"
+  ],
   "homepage":          "http://cubex.io/bundl/lumberjack",
   "minimum-stability": "dev",
   "license":           "BSD-3-Clause",
@@ -15,10 +17,10 @@
     }
   ],
   "require":           {
-    "php":             ">=5.4.0",
-    "psr/log":         "1.0.0",
-    "cubex/cubex":     "*",
-    "cubex/cassandra": "*"
+    "php":                      ">=5.4.0",
+    "psr/log":                  "1.0.0",
+    "cubex/cubex":              "*",
+    "packaged/cassandrathrift": "*"
   },
   "autoload":          {
     "psr-0": {
